@@ -1,0 +1,10 @@
+.profile__profession {
+  grid-area: profession;
+  margin: 0;
+  align-self: flex-start;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+}

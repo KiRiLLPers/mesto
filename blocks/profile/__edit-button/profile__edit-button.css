@@ -1,0 +1,8 @@
+.profile__edit-button {
+  grid-area: button;
+  align-self: flex-end;
+  background-image: url(../../../images/Edit-Button.svg);
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+}

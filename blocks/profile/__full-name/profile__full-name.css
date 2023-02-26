@@ -1,0 +1,10 @@
+.profile__full-name {
+  grid-area: fullname;
+  margin: 0;
+  align-self: flex-end;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  color: #FFFFFF;
+}
