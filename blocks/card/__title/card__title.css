@@ -1,8 +1,5 @@
 .card__title {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  max-width: 246px;
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
@@ -11,13 +8,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin: 25px 15px 31px 21px;
-}
-
-.card__title::after {
-  content: '';
-  display: inline-block;
-  width: 22px;
-  height: 19px;
-  background-image: url(../../../images/like.svg);
+  max-width: 198px;
 }
