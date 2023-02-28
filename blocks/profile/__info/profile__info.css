@@ -7,3 +7,11 @@
   gap: 16px 18px;
   align-items: center;
 }
+
+@media screen and (max-width: 320px) {
+  .profile__info {
+    margin-bottom: 33px;
+    gap: 8px 10px;
+    padding-left: 25px;
+  }
+}
