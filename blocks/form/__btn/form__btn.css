@@ -8,6 +8,16 @@
   line-height: 22px;
   text-align: center;
   color: #FFFFFF;
-  margin-top: 48px;
+  margin-top: 46px;
   border: none;
+}
+
+@media screen and (max-width: 450px) {
+  .form__btn {
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 43px;
+  }
 }
