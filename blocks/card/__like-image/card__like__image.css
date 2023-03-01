@@ -1,3 +1,8 @@
 .card__like-image {
   margin: 0 4px 5px 0;
+  background-image: url(../../../images/like.svg);
+  width: 22px;
+  height: 19px;
+  border: none;
+  background-color: transparent;
 }
