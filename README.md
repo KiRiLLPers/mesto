@@ -19,4 +19,4 @@
 7. scss.
 8. js.
 
-[Ссылка на страницу "Mesto"]()
+[Ссылка на страницу "Mesto"](https://kirillpers.github.io/mesto/)
