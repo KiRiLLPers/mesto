@@ -1,5 +1,5 @@
 let profileBtn = document.querySelector(".profile__edit-button");
-let closeBtn = document.querySelector(".close-btn");
+let closeBtn = document.querySelector(".popup__close-btn");
 let popup = document.querySelector(".popup");
 let inputTtile = document.querySelector(".form__item_el_heading");
 let inputSubtitle = document.querySelector(".form__item_el_subheading");

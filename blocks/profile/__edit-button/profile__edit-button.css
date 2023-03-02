@@ -4,17 +4,24 @@
   background-image: url(../../../images/edit-button-main.svg);
   background-repeat: no-repeat;
   background-position: center;
-  background-color: black;
+  background-color: transparent;
   border: 1px solid #FFFFFF;
   width: 24px;
   height: 24px;
   margin-bottom: 6px;
+  opacity: 1;
+  transition: opacity 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 650px) {
   .profile__edit-button {
-    background-image: url(../../../images/edit-button-mobile.svg);
     width: 18px;
     height: 18px;
+    background-size: 7.5px;
   }
 }

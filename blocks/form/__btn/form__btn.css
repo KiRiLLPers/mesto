@@ -10,6 +10,13 @@
   color: #FFFFFF;
   margin-top: 46px;
   border: none;
+  opacity: 1;
+  transition: opacity 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.form__btn:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 450px) {

@@ -5,4 +5,11 @@
   height: 19px;
   border: none;
   background-color: transparent;
+  opacity: 1;
+  transition: opacity 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.card__like-image:hover {
+  opacity: 0.5;
 }
