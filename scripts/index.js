@@ -7,30 +7,27 @@ const profileFullNameElement = document.querySelector(".profile__full-name");
 const profileProfessionElement = document.querySelector(".profile__profession");
 const formElement = popupElement.querySelector(".form");
 const profileAddBtnElement = document.querySelector(".profile__add-button");
-const formTitleElement = popupElement.querySelector(".form__heading")
+const formTitleElement = popupElement.querySelector(".form__heading");
+const cardLikeElements = document.querySelectorAll(".card__like-image");
 
 // Реализация функционала ПР4
 
-const openPopupProfile = () => {
+const openPopup = () => {
   popupElement.classList.add("popup_opened");
 
-  formTitleElement.textContent = "Редактировать профиль";
   inputTtileElement.value = profileFullNameElement.textContent;
   inputSubtitleElement.value = profileProfessionElement.textContent;
-
-  inputTtileElement.placeholder = "Введите Ваше имя"
-  inputSubtitleElement.placeholder = "Введите название вашей профессии"
 }
 
 
-const closePopupProfile = () => { // закрываем попап с формой профиля
+const closePopup = () => { 
   popupElement.classList.remove("popup_opened");
 }
 
-const closePopupProfileClickOnOverlay = (e) => { //закрываем попап нажатием на любое место кроме формы
+const closePopupClickOnOverlay = (e) => {
   console.log(e.target, e.currentTarget)
   if(e.target === e.currentTarget) {
-    closePopupProfile();
+    closePopup();
   }
 
 }
@@ -41,14 +38,21 @@ const handleFormSubmitProfile = (e) => {
   profileFullNameElement.textContent = inputTtileElement.value;
   profileProfessionElement.textContent = inputSubtitleElement.value;
 
-  closePopupProfile();
+  closePopup();
 }
 
-// слушатели событий
-popupElement.addEventListener("click", closePopupProfileClickOnOverlay)
-profileBtnElement.addEventListener("click", openPopupProfile);
+popupElement.addEventListener("click", closePopupClickOnOverlay)
+profileBtnElement.addEventListener("click", openPopup);
 formElement.addEventListener("submit", handleFormSubmitProfile);
-popupCloseBtnElement.addEventListener("click", closePopupProfile);
+popupCloseBtnElement.addEventListener("click", closePopup);
+
+
+cardLikeElements.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    e.target.classList.toggle("card__like-image_active");
+  })
+})
+
 
 
 
