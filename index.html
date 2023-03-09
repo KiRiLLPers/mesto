@@ -94,16 +94,34 @@
       <footer class="footer content__footer">
         <p class="footer__copyrigth">&copy; 2023 Mesto Russia</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup-profile">
         <div class="popup__container">
-          <form class="form popup__form" name="form-profile">
+          <form class="form popup__form popup-form-profile" name="form-profile">
             <h2 class="form__heading">Редактировать профиль</h2>
             <fieldset class="form__profile-info">
-              <input type="text" class="form__item form__item_el_heading" id="heading" name="heading">
-              <input type="text" class="form__item form__item_el_subheading" id="subheading" name="subheading">
+              <input type="text" class="form__item form__item_el_heading" id="heading" name="heading" placeholder="Введите Ваше имя">
+              <input type="text" class="form__item form__item_el_subheading" id="subheading" name="subheading" placeholder="Ваша профессия">
             </fieldset>
             <button type="submit" class="form__btn">Сохранить</button>
           </form>
+          <button type="button" class="popup__close-btn"></button>
+        </div>
+      </div>
+      <div class="popup popup-cards">
+        <div class="popup__container">
+          <form class="form popup__form popup-form-cards" name="form-profile">
+            <h2 class="form__heading">Новое место</h2>
+            <fieldset class="form__profile-info">
+              <input type="text" class="form__item form__item_el_place-name" id="place-name" name="place-name" placeholder="Название">
+              <input type="text" class="form__item form__item_el_url" id="url" name="url" placeholder="Ссылка на картинку">
+            </fieldset>
+            <button type="submit" class="form__btn">Сохранить</button>
+          </form>
+          <button type="button" class="popup__close-btn"></button>
+        </div>
+      </div>
+      <div class="popup popup-img">
+        <div class="popup__container">
           <button type="button" class="popup__close-btn"></button>
         </div>
       </div>
