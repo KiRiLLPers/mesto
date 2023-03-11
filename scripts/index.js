@@ -25,6 +25,9 @@ const divPhotosElement = document.querySelector(".photos__wrap");
 const popupBigImageElement = popupImgElement.querySelector(".popup__image");
 const popupBigImageCaptionElement = popupImgElement.querySelector(".popup__caption");
 
+const cardTemplate = document.querySelector("#card-template").content;
+
+
 const initialCards = [
   {
     name: "Архыз",
@@ -103,18 +106,13 @@ const openPopupImage = (e) => {
   openPopup(popupImgElement);
 };
 
-const renderCards = (arrCards) => {
-  // функция отрисовки карточек из исходного массива
+const createCard = (item) => { // функция создания карточки
 
-  arrCards.forEach((item) => {
-    const cardTemplate = document.querySelector("#card-template").content;
     const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 
     cardElement.querySelector(".card__image").src = item.link;
     cardElement.querySelector(".card__image").alt = item.name;
     cardElement.querySelector(".card__title").textContent = item.name;
-
-    divPhotosElement.append(cardElement);
 
     cardElement.querySelector(".card__image").addEventListener("click", openPopupImage);
 
@@ -126,39 +124,30 @@ const renderCards = (arrCards) => {
       const deleteCard = e.target.closest(".card");
       deleteCard.remove();
     });
-  });
+
+  return cardElement;
+}
+
+
+const renderCards = (arrCards) => {  // функция отрисовки карточек из исходного массива
+  arrCards.forEach((item) => {
+    divPhotosElement.append(createCard(item));
+  })
 };
 
 const handleFormSubmitCards = (e) => {
   // обработчик сохранения новых карточек
   e.preventDefault();
 
-  const cardTemplate = document.querySelector("#card-template").content;
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+  const newCard = {};
+  newCard.name = inputCardsTtileElement.value;
+  newCard.link = inputCardsSubTtileElement.value;
 
-  cardElement.querySelector(".card__image").src = inputCardsSubTtileElement.value;
-  cardElement.querySelector(".card__image").alt = inputCardsTtileElement.value;
-  cardElement.querySelector(".card__title").textContent = inputCardsTtileElement.value;
-
-  cardElement.querySelector(".card__image").addEventListener("click", openPopupImage); // открытие фотографии карточки
-
-  cardElement.querySelector(".card__like-image").addEventListener("click", (e) => {
-    // возможность ставить лайк карточке
-    e.target.classList.toggle("card__like-image_active");
-  });
-
-  cardElement.querySelector(".card__trash-btn").addEventListener("click", (e) => {
-    // удаление карточки
-    const deleteCard = e.target.closest(".card");
-    deleteCard.remove();
-  });
-
-  divPhotosElement.prepend(cardElement);
+  divPhotosElement.prepend(createCard(newCard));
 
   closePopup(popupCardsElement);
 
-  inputCardsTtileElement.value = "";
-  inputCardsSubTtileElement.value = "";
+  e.target.reset();
 };
 
 renderCards(initialCards); // вызываем фукнцию, чтобы отрисовать все карточки при загрузке страницы
@@ -174,9 +163,8 @@ profileBtnElement.addEventListener("click", openPopupProfile); // слушате
 formProfileElement.addEventListener("submit", handleFormSubmitProfile); // слушатель для обработки введенных пользователей данных и клика на "сохранить"
 popupCardsOpenBtnElement.addEventListener("click", openPopupCards); // слушатель для открытия попапа добавления новых карточек
 formCardsElement.addEventListener("submit", handleFormSubmitCards); // слушатель для обработки названия и ссылки картинки пользователя
-
-popupCloseBtnElements.forEach((item) => {
-  // закрываем любой попап нажатием на любой крестик закрытия попапа)
+  
+popupCloseBtnElements.forEach((item) => { // закрываем любой попап нажатием на любой крестик закрытия попапа)
   item.addEventListener("click", () => {
     popupElements.forEach((popupEl) => {
       closePopup(popupEl);
