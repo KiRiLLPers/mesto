@@ -8,6 +8,6 @@
   color: #000000;
 }
 
-.form__item:last-child {
+.form__item:nth-child(3) {
   margin-top: 28px;
 }

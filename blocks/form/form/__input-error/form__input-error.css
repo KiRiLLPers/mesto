@@ -6,7 +6,8 @@
   line-height: 15px;
   color: #ff0000;
   margin-top: 5px;
-  margin-bottom: 13px;
+  margin-bottom: -15px;
+  display: none;
 }
 
 .form__input-error:last-of-type {
