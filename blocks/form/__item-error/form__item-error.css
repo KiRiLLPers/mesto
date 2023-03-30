@@ -1,4 +1,4 @@
-.form__input-error {
+.form__item-error {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -10,6 +10,6 @@
   display: none;
 }
 
-.form__input-error:last-of-type {
+.form__item-error:last-of-type {
   margin-bottom: 0;
 }

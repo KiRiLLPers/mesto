@@ -39,9 +39,9 @@
             <h2 class="form__heading">Редактировать профиль</h2>
             <fieldset class="form__profile-info">
               <input type="text" class="form__item form__item_el_heading" id="heading" name="heading" placeholder="Введите Ваше имя" minlength="2" maxlength="40" required />
-              <span class="form__input-error heading-input-error">Вы пропустили поле.</span>
+              <span class="form__item-error heading-error">Вы пропустили поле.</span>
               <input type="text" class="form__item form__item_el_subheading" id="subheading" name="subheading" placeholder="Ваша профессия" minlength="2" maxlength="200" required />
-              <span class="form__input-error subheading-input-error">Вы пропустили поле.</span>
+              <span class="form__item-error subheading-error">Вы пропустили поле.</span>
             </fieldset>
             <button type="submit" class="form__btn">Сохранить</button>
           </form>
@@ -54,9 +54,9 @@
             <h2 class="form__heading">Новое место</h2>
             <fieldset class="form__profile-info">
               <input type="text" class="form__item form__item_el_place-name" id="place-name" name="place-name" placeholder="Название" minlength="2" maxlength="30" required />
-              <span class="form__input-error place-name-input-error">Вы пропустили поле.</span>
+              <span class="form__item-error place-name-error">Вы пропустили поле.</span>
               <input type="url" class="form__item form__item_el_url" id="url" name="url" placeholder="Ссылка на картинку" required />
-              <span class="form__input-error url-input-error">Введите адрес сайта.</span>
+              <span class="form__item-error url-error">Введите адрес сайта.</span>
             </fieldset>
             <button type="submit" class="form__btn">Создать</button>
           </form>
@@ -83,7 +83,7 @@
         <button type="button" class="card__trash-btn"></button>
       </article>
     </template>
-    <script src="./scripts/index.js"></script>
     <script src="./scripts/validate.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

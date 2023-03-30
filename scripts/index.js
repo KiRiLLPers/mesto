@@ -57,11 +57,15 @@ const initialCards = [
 const openPopup = (popup) => {
   // функция открытия любого попапа
   popup.classList.add("popup_opened")
+  // добавление слушателя для закрытия попапа кнопкой escape
+  document.addEventListener("keydown", closePopupClickEsc)
 }
 
 const closePopup = (popup) => {
   // функция закрытия любого попапа
   popup.classList.remove("popup_opened")
+  // удаление слушателя закрытия попапа нажатием на escape при закрытии попапа
+  document.removeEventListener("keydown", closePopupClickEsc)
 }
 
 const closePopupClickOnOverlay = (e) => {
@@ -83,8 +87,6 @@ const openPopupProfile = () => {
 
 const handleFormSubmitProfile = (e) => {
   // обработчик введенных пользователей данных для редактирования профиля
-  e.preventDefault()
-
   profileFullNameElement.textContent = inputProfileTtileElement.value
   profileProfessionElement.textContent = inputProfileSubtitleElement.value
 
@@ -139,8 +141,6 @@ const renderCards = (arrCards) => {
 
 const handleFormSubmitCards = (e) => {
   // обработчик сохранения новых карточек
-  e.preventDefault()
-
   const newCard = {}
   newCard.name = inputCardsTtileElement.value
   newCard.link = inputCardsSubTtileElement.value
@@ -154,15 +154,14 @@ const handleFormSubmitCards = (e) => {
 
 renderCards(initialCards) // вызываем фукнцию, чтобы отрисовать все карточки при загрузке страницы
 
-// слушатели
-
-document.addEventListener("keydown", (e) => {
+const closePopupClickEsc = (e) => {
   if (e.key === "Escape") {
     popupElements.forEach((popupEl) => {
       closePopup(popupEl)
     })
   }
-})
+}
+// слушатели
 
 popupElements.forEach((item) => {
   // слушатель для закрытия любого попапа кликом на оверлей
