@@ -30,9 +30,8 @@ const openPopupProfile = () => {
   const errorMessages = Array.from(popupProfileElement.querySelectorAll(".form__item-error"));
   const btnEl = popupProfileElement.querySelector(".form__btn");
 
-  btnEl.classList.remove("form__btn_inactive");
-
   resetFormErrorMessages(inputList, errorMessages);
+  toggleBtnState(inputList, btnEl, inactiveBtnClass = "form__btn_inactive")
 
   inputProfileTtileElement.value = profileFullNameElement.textContent;
   inputProfileSubtitleElement.value = profileProfessionElement.textContent;
@@ -62,6 +61,7 @@ const openPopupCards = () => {
   btnEl.classList.add("form__btn_inactive");
 
   resetFormErrorMessages(inputList, errorMessages);
+
 };
 
 const openPopupImage = (e) => {
