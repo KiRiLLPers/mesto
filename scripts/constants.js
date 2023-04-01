@@ -1,3 +1,12 @@
+const validationSetting = {
+  formSelector: ".form",
+  inputSelector: ".form__item",
+  submitBtnSelector: ".form__btn",
+  inactiveBtnClass: "form__btn_inactive",
+  inputErrorClass: "form__item_type_error",
+  errorClass: "form__item-error_active",
+};
+
 const popupElements = document.querySelectorAll(".popup");
 
 const popupProfileElement = document.querySelector(".popup-profile");
@@ -15,12 +24,12 @@ const profileProfessionElement = document.querySelector(".profile__profession");
 const formProfileElement = document.querySelector(".popup-form-profile");
 const inputProfileTtileElement = formProfileElement.querySelector(".form__item_el_heading");
 const inputProfileSubtitleElement = formProfileElement.querySelector(".form__item_el_subheading");
-const inputProfileList = Array.from(popupProfileElement.querySelectorAll(".form__item"));
+const inputProfileList = Array.from(popupProfileElement.querySelectorAll(validationSetting.inputSelector));
 
 const formCardsElement = document.querySelector(".popup-form-cards");
 const inputCardsTtileElement = formCardsElement.querySelector(".form__item_el_place-name");
 const inputCardsSubTtileElement = formCardsElement.querySelector(".form__item_el_url");
-const inputCardsList = Array.from(popupCardsElement.querySelectorAll(".form__item"));
+const inputCardsList = Array.from(popupCardsElement.querySelectorAll(validationSetting.inputSelector));
 
 const divPhotosElement = document.querySelector(".photos__wrap");
 
@@ -55,12 +64,3 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-
-const validationSetting = {
-  formSelector: ".form",
-  inputSelector: ".form__item",
-  submitBtnSelector: ".form__btn",
-  inactiveBtnClass: "form__btn_inactive",
-  inputErrorClass: "form__item_type_error",
-  errorClass: "form__item-error_active",
-};

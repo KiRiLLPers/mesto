@@ -16,9 +16,7 @@ const closePopup = (popup) => {
   // функция закрытия любого попапа кликом на оверлей
 const closePopupClickOnOverlay = (e) => {
   if (e.target === e.currentTarget) {
-    popupElements.forEach((popupEl) => {
-      closePopup(popupEl);
-    });
+    closePopup(e.target);
   }
 };
 
@@ -28,9 +26,9 @@ const openPopupProfile = () => {
   openPopup(popupProfileElement);
 
   const errorMessages = Array.from(popupProfileElement.querySelectorAll(".form__item-error"));
-  const btnEl = popupProfileElement.querySelector(".form__btn");
+  const btnEl = popupProfileElement.querySelector(validationSetting.submitBtnSelector);
   
-  btnEl.classList.remove("form__btn_inactive");
+  btnEl.classList.remove(validationSetting.inactiveBtnClass);
 
   resetFormErrorMessages(inputProfileList, errorMessages);
 
@@ -56,9 +54,9 @@ const openPopupCards = () => {
   openPopup(popupCardsElement);
 
   const errorMessages = Array.from(popupCardsElement.querySelectorAll(".form__item-error"));
-  const btnEl = popupCardsElement.querySelector(".form__btn");
+  const btnEl = popupCardsElement.querySelector(validationSetting.submitBtnSelector);
 
-  btnEl.classList.add("form__btn_inactive");
+  btnEl.classList.add(validationSetting.inactiveBtnClass);
 
   resetFormErrorMessages(inputCardsList, errorMessages);
 };
@@ -136,9 +134,9 @@ const closePopupClickEsc = (e) => {
 };
 // слушатели
 
-popupElements.forEach((item) => {
+popupElements.forEach((popupEl) => {
   // слушатель для закрытия любого попапа кликом на оверлей
-  item.addEventListener("click", closePopupClickOnOverlay);
+  popupEl.addEventListener("click", closePopupClickOnOverlay);
 });
 
 profileBtnElement.addEventListener("click", openPopupProfile); // слушатель для открытия редактирования профиля
