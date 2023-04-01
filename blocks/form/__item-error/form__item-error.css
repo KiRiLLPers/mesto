@@ -5,9 +5,9 @@
   font-size: 12px;
   line-height: 15px;
   color: #ff0000;
-  margin-top: 5px;
-  margin-bottom: -15px;
-  display: none;
+  margin: 5px 0 5px 0;
+  min-height: 30px;
+  visibility: hidden;
 }
 
 .form__item-error:last-of-type {

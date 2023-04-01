@@ -1,19 +1,19 @@
-const openPopup = (popup) => {
   // функция открытия любого попапа
+const openPopup = (popup) => {
   popup.classList.add("popup_opened");
   // добавление слушателя для закрытия попапа кнопкой escape
   document.addEventListener("keydown", closePopupClickEsc);
 };
 
-const closePopup = (popup) => {
   // функция закрытия любого попапа
+const closePopup = (popup) => {
   popup.classList.remove("popup_opened");
   // удаление слушателя закрытия попапа нажатием на escape при закрытии попапа
   document.removeEventListener("keydown", closePopupClickEsc);
 };
 
-const closePopupClickOnOverlay = (e) => {
   // функция закрытия любого попапа кликом на оверлей
+const closePopupClickOnOverlay = (e) => {
   if (e.target === e.currentTarget) {
     popupElements.forEach((popupEl) => {
       closePopup(popupEl);
@@ -21,24 +21,26 @@ const closePopupClickOnOverlay = (e) => {
   }
 };
 
-
-const openPopupProfile = () => {
   // функция открытия попапа с редактированием профиля пользователя
+const openPopupProfile = () => {
+  
   openPopup(popupProfileElement);
 
   const inputList = Array.from(popupProfileElement.querySelectorAll(".form__item"));
   const errorMessages = Array.from(popupProfileElement.querySelectorAll(".form__item-error"));
   const btnEl = popupProfileElement.querySelector(".form__btn");
+  
+  btnEl.classList.remove("form__btn_inactive");
 
   resetFormErrorMessages(inputList, errorMessages);
-  toggleBtnState(inputList, btnEl, inactiveBtnClass = "form__btn_inactive")
 
   inputProfileTtileElement.value = profileFullNameElement.textContent;
   inputProfileSubtitleElement.value = profileProfessionElement.textContent;
 };
 
-const handleFormSubmitProfile = (e) => {
   // обработчик введенных пользователей данных для редактирования профиля
+const handleFormSubmitProfile = (e) => {
+  
   const inputList = Array.from(popupProfileElement.querySelectorAll(".form__item"));
 
   if (!hasInvalidinput(inputList)) {
@@ -61,11 +63,10 @@ const openPopupCards = () => {
   btnEl.classList.add("form__btn_inactive");
 
   resetFormErrorMessages(inputList, errorMessages);
-
 };
 
-const openPopupImage = (e) => {
   // функция открытия картинки
+const openPopupImage = (e) => {
 
   popupBigImageElement.src = e.target.src;
   popupBigImageCaptionElement.textContent = e.target.closest(".card").querySelector(".card__title").textContent;
@@ -74,8 +75,8 @@ const openPopupImage = (e) => {
   openPopup(popupImgElement);
 };
 
-const createCard = (item) => {
   // функция создания карточки
+const createCard = (item) => {
 
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 
@@ -83,31 +84,33 @@ const createCard = (item) => {
   cardElement.querySelector(".card__image").alt = item.name;
   cardElement.querySelector(".card__title").textContent = item.name;
 
-  cardElement.querySelector(".card__image").addEventListener("click", openPopupImage);
-
-  cardElement.addEventListener("click", (e) => {
-    if (e.target.classList.contains("card__like-image")) {
-      e.target.classList.toggle("card__like-image_active");
-    }
-  });
-
-  cardElement.querySelector(".card__trash-btn").addEventListener("click", (e) => {
-    const deleteCard = e.target.closest(".card");
-    deleteCard.remove();
-  });
+  setEventListenerForCards(cardElement);
 
   return cardElement;
 };
 
-const renderCards = (arrCards) => {
+const setEventListenerForCards = (card) => {
+  card.querySelector(".card__image").addEventListener("click", openPopupImage);
+  card.addEventListener("click", (e) => {
+    if (e.target.classList.contains("card__like-image")) {
+      e.target.classList.toggle("card__like-image_active");
+    }
+    card.querySelector(".card__trash-btn").addEventListener("click", (e) => {
+    const deleteCard = e.target.closest(".card");
+    deleteCard.remove();
+  });
+  });
+}
+
   // функция отрисовки карточек из исходного массива
+const renderCards = (arrCards) => {
   arrCards.forEach((item) => {
     divPhotosElement.append(createCard(item));
   });
 };
 
-const handleFormSubmitCards = (e) => {
   // обработчик сохранения новых карточек
+const handleFormSubmitCards = (e) => {
   const inputList = Array.from(popupCardsElement.querySelectorAll(".form__item"));
 
   if (!hasInvalidinput(inputList)) {

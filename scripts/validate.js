@@ -41,10 +41,11 @@ const showInputError = (form, inputEl, errorMessage, inputErrorClass, errorClass
   inputEl.classList.add(inputErrorClass)
   errorEl.textContent = errorMessage
   errorEl.classList.add(errorClass)
+
 }
 
 // функция скрытия текста ошибки
-const hideInputError = (form, inputEl, {inputErrorClass, errorClass}) => {
+const hideInputError = (form, inputEl, inputErrorClass, errorClass) => {
   const errorEl = form.querySelector(`.${inputEl.id}-error`)
   inputEl.classList.remove(inputErrorClass)
   errorEl.classList.remove(errorClass)
