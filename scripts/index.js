@@ -1,3 +1,4 @@
+
   // функция открытия любого попапа
 const openPopup = (popup) => {
   popup.classList.add("popup_opened");
@@ -26,13 +27,12 @@ const openPopupProfile = () => {
   
   openPopup(popupProfileElement);
 
-  const inputList = Array.from(popupProfileElement.querySelectorAll(".form__item"));
   const errorMessages = Array.from(popupProfileElement.querySelectorAll(".form__item-error"));
   const btnEl = popupProfileElement.querySelector(".form__btn");
   
   btnEl.classList.remove("form__btn_inactive");
 
-  resetFormErrorMessages(inputList, errorMessages);
+  resetFormErrorMessages(inputProfileList, errorMessages);
 
   inputProfileTtileElement.value = profileFullNameElement.textContent;
   inputProfileSubtitleElement.value = profileProfessionElement.textContent;
@@ -41,9 +41,8 @@ const openPopupProfile = () => {
   // обработчик введенных пользователей данных для редактирования профиля
 const handleFormSubmitProfile = (e) => {
   
-  const inputList = Array.from(popupProfileElement.querySelectorAll(".form__item"));
 
-  if (!hasInvalidinput(inputList)) {
+  if (!hasInvalidinput(inputProfileList)) {
     closePopup(popupProfileElement);
   } else {
     return;
@@ -56,13 +55,12 @@ const handleFormSubmitProfile = (e) => {
 const openPopupCards = () => {
   openPopup(popupCardsElement);
 
-  const inputList = Array.from(popupCardsElement.querySelectorAll(".form__item"));
   const errorMessages = Array.from(popupCardsElement.querySelectorAll(".form__item-error"));
   const btnEl = popupCardsElement.querySelector(".form__btn");
 
   btnEl.classList.add("form__btn_inactive");
 
-  resetFormErrorMessages(inputList, errorMessages);
+  resetFormErrorMessages(inputCardsList, errorMessages);
 };
 
   // функция открытия картинки
@@ -111,9 +109,8 @@ const renderCards = (arrCards) => {
 
   // обработчик сохранения новых карточек
 const handleFormSubmitCards = (e) => {
-  const inputList = Array.from(popupCardsElement.querySelectorAll(".form__item"));
 
-  if (!hasInvalidinput(inputList)) {
+  if (!hasInvalidinput(inputCardsList)) {
     closePopup(popupCardsElement);
   } else {
     return;

@@ -15,10 +15,12 @@ const profileProfessionElement = document.querySelector(".profile__profession");
 const formProfileElement = document.querySelector(".popup-form-profile");
 const inputProfileTtileElement = formProfileElement.querySelector(".form__item_el_heading");
 const inputProfileSubtitleElement = formProfileElement.querySelector(".form__item_el_subheading");
+const inputProfileList = Array.from(popupProfileElement.querySelectorAll(".form__item"));
 
 const formCardsElement = document.querySelector(".popup-form-cards");
 const inputCardsTtileElement = formCardsElement.querySelector(".form__item_el_place-name");
 const inputCardsSubTtileElement = formCardsElement.querySelector(".form__item_el_url");
+const inputCardsList = Array.from(popupCardsElement.querySelectorAll(".form__item"));
 
 const divPhotosElement = document.querySelector(".photos__wrap");
 

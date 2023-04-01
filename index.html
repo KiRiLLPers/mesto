@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Обучающая интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки" />
-    <meta name="author" content="Першин Кирилл" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Обучающая интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки">
+    <meta name="author" content="Першин Кирилл">
+    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
   </head>
   <body class="page">
@@ -17,7 +17,7 @@
       <main class="main content__main">
         <section class="profile main__profile">
           <div class="profile__wrap">
-            <img src="./images/portfolio-photo.jpg" alt="Фотография пользователя" class="profile__avatar" />
+            <img src="./images/portfolio-photo.jpg" alt="Фотография пользователя" class="profile__avatar">
             <div class="profile__info">
               <h1 class="profile__full-name">Жак-Ив Кусто</h1>
               <p class="profile__profession">Исследователь океана</p>
@@ -38,9 +38,9 @@
           <form class="form popup__form popup-form-profile" name="form-profile" novalidate>
             <h2 class="form__heading">Редактировать профиль</h2>
             <fieldset class="form__profile-info">
-              <input type="text" class="form__item form__item_el_heading" id="heading" name="heading" placeholder="Введите Ваше имя" minlength="2" maxlength="40" required />
+              <input type="text" class="form__item form__item_el_heading" id="heading" name="heading" placeholder="Введите Ваше имя" minlength="2" maxlength="40" required>
               <span class="form__item-error heading-error"></span>
-              <input type="text" class="form__item form__item_el_subheading" id="subheading" name="subheading" placeholder="Ваша профессия" minlength="2" maxlength="200" required />
+              <input type="text" class="form__item form__item_el_subheading" id="subheading" name="subheading" placeholder="Ваша профессия" minlength="2" maxlength="200" required>
               <span class="form__item-error subheading-error"></span>
             </fieldset>
             <button type="submit" class="form__btn">Сохранить</button>
@@ -53,9 +53,9 @@
           <form class="form popup__form popup-form-cards" name="form-cards" novalidate>
             <h2 class="form__heading">Новое место</h2>
             <fieldset class="form__profile-info">
-              <input type="text" class="form__item form__item_el_place-name" id="place-name" name="place-name" placeholder="Название" minlength="2" maxlength="30" required />
+              <input type="text" class="form__item form__item_el_place-name" id="place-name" name="place-name" placeholder="Название" minlength="2" maxlength="30" required>
               <span class="form__item-error place-name-error"></span>
-              <input type="url" class="form__item form__item_el_url" id="url" name="url" placeholder="Ссылка на картинку" required />
+              <input type="url" class="form__item form__item_el_url" id="url" name="url" placeholder="Ссылка на картинку" required>
               <span class="form__item-error url-error"></span>
             </fieldset>
             <button type="submit" class="form__btn">Создать</button>
@@ -66,7 +66,7 @@
       <div class="popup popup-img">
         <div class="popup__container-image">
           <figure class="popup__figure">
-            <img src="#" alt="" class="popup__image" />
+            <img src="#" alt="" class="popup__image">
             <figcaption class="popup__caption"></figcaption>
           </figure>
           <button type="button" class="popup__close-btn"></button>
@@ -75,7 +75,7 @@
     </div>
     <template id="card-template">
       <article class="card">
-        <img src="#" alt=" " class="card__image" />
+        <img src="#" alt=" " class="card__image">
         <div class="card__wrap">
           <h2 class="card__title"></h2>
           <button type="button" class="card__like-image"></button>
