@@ -18,5 +18,6 @@
 6. Figma.
 7. scss.
 8. js.
+9. ООП.
 
 [Ссылка на страницу "Mesto"](https://kirillpers.github.io/mesto/)
