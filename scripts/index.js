@@ -86,9 +86,6 @@ const openPopupCards = () => {
   openPopup(popupCardsElement)
 
   const errorMessages = Array.from(popupCardsElement.querySelectorAll(".form__item-error"))
-  const btnEl = popupCardsElement.querySelector(validationSetting.submitBtnSelector)
-
-  btnEl.classList.add(validationSetting.inactiveBtnClass)
 
   cardsFormValidation.resetFormErrorMessages(errorMessages)
 }
