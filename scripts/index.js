@@ -24,7 +24,7 @@ const formCardsElement = document.querySelector(".popup-form-cards")
 const inputCardsTtileElement = formCardsElement.querySelector(".form__item_el_place-name")
 const inputCardsSubTtileElement = formCardsElement.querySelector(".form__item_el_url")
 
-const divPhotosElement = document.querySelector(".photos__wrap")
+const cardsContainer = document.querySelector(".photos__wrap")
 
 const popupBigImageElement = popupImgElement.querySelector(".popup__image")
 const popupBigImageCaptionElement = popupImgElement.querySelector(".popup__caption")
@@ -48,11 +48,17 @@ const closePopup = (popup) => {
   document.removeEventListener("keydown", closePopupClickEsc)
 }
 
+const hasPopupContainClassOpened = (popupElements) => {
+  popupElements.forEach((popupEl) => {
+    if (popupEl.classList.contains("popup_opened")) {
+      closePopup(popupEl)
+    }
+  })
+}
+
 const closePopupClickEsc = (e) => {
   if (e.key === "Escape") {
-    popupElements.forEach((popupEl) => {
-      closePopup(popupEl)
-    })
+    hasPopupContainClassOpened(popupElements)
   }
 }
 // функция закрытия любого попапа кликом на оверлей
@@ -66,9 +72,7 @@ const closePopupClickOnOverlay = (e) => {
 const openPopupProfile = () => {
   openPopup(popupProfileElement)
 
-  const errorMessages = Array.from(popupProfileElement.querySelectorAll(".form__item-error"))
-
-  profileFormValidation.resetFormErrorMessages(errorMessages)
+  profileFormValidation.resetFormErrorMessages()
 
   inputProfileTtileElement.value = profileFullNameElement.textContent
   inputProfileSubtitleElement.value = profileProfessionElement.textContent
@@ -85,9 +89,7 @@ const handleFormSubmitProfile = (e) => {
 const openPopupCards = () => {
   openPopup(popupCardsElement)
 
-  const errorMessages = Array.from(popupCardsElement.querySelectorAll(".form__item-error"))
-
-  cardsFormValidation.resetFormErrorMessages(errorMessages)
+  cardsFormValidation.resetFormErrorMessages()
 }
 
 // функция открытия картинки
@@ -110,7 +112,7 @@ const createCard = (item) => {
 // функция отрисовки карточек из исходного массива
 const renderCards = (arrCards) => {
   arrCards.forEach((item) => {
-    divPhotosElement.append(createCard(item))
+    cardsContainer.append(createCard(item))
   })
 }
 
@@ -122,7 +124,7 @@ const handleFormSubmitCards = (e) => {
   newCard.name = inputCardsTtileElement.value
   newCard.link = inputCardsSubTtileElement.value
 
-  divPhotosElement.prepend(createCard(newCard))
+  cardsContainer.prepend(createCard(newCard))
 
   e.target.reset()
 }
@@ -130,6 +132,12 @@ const handleFormSubmitCards = (e) => {
 renderCards(initialCards) // вызываем фукнцию, чтобы отрисовать все карточки при загрузке страницы
 
 // слушатели
+popupCloseBtnElements.forEach((item) => {
+  // закрываем любой попап нажатием на любой крестик закрытия попапа)
+  item.addEventListener("click", () => {
+    hasPopupContainClassOpened(popupElements)
+  })
+})
 
 popupElements.forEach((popupEl) => {
   // слушатель для закрытия любого попапа кликом на оверлей
@@ -140,15 +148,6 @@ profileBtnElement.addEventListener("click", openPopupProfile) // слушате�
 formProfileElement.addEventListener("submit", handleFormSubmitProfile) // слушатель для обработки введенных пользователей данных и клика на "сохранить"
 popupCardsOpenBtnElement.addEventListener("click", openPopupCards) // слушатель для открытия попапа добавления новых карточек
 formCardsElement.addEventListener("submit", handleFormSubmitCards) // слушатель для обработки названия и ссылки картинки пользователя
-
-popupCloseBtnElements.forEach((item) => {
-  // закрываем любой попап нажатием на любой крестик закрытия попапа)
-  item.addEventListener("click", () => {
-    popupElements.forEach((popupEl) => {
-      closePopup(popupEl)
-    })
-  })
-})
 
 cardsFormValidation.enableValidation()
 profileFormValidation.enableValidation()

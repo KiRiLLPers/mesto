@@ -1,25 +1,26 @@
 export default class FormValidator {
-  constructor(data, popupForm) {
-    this._formSelector = data.formSelector
-    this._inputSelector = data.inputSelector
-    this._submitBtnSelector = data.submitBtnSelector
-    this._inactiveBtnClass = data.inactiveBtnClass
-    this._inputErrorClass = data.inputErrorClass
-    this._errorClass = data.errorClass
+  constructor(validationConfig, popupForm) {
+    this._formSelector = validationConfig.formSelector
+    this._inputSelector = validationConfig.inputSelector
+    this._submitBtnSelector = validationConfig.submitBtnSelector
+    this._inactiveBtnClass = validationConfig.inactiveBtnClass
+    this._inputErrorClass = validationConfig.inputErrorClass
+    this._errorClass = validationConfig.errorClass
     this._popupForm = popupForm
+    this._inputList = Array.from(this._popupForm.querySelectorAll(this._inputSelector))
+    this._btnEl = this._popupForm.querySelector(this._submitBtnSelector)
+    this._errorMessages = Array.from(this._popupForm.querySelectorAll(".form__item-error"))
   }
 
   _setListener(form) {
-    const inputList = Array.from(form.querySelectorAll(this._inputSelector))
-    const btnEl = form.querySelector(this._submitBtnSelector)
-    this._disableBtn(btnEl)
+    this._disableBtn(this._btnEl)
 
-    inputList.forEach((inputEl) => {
+    this._inputList.forEach((inputEl) => {
       inputEl.addEventListener("input", (e) => {
         this._checkInputValidity(form, inputEl)
-        if (this.hasInvalidinput(inputList)) {
-          this._disableBtn(btnEl)
-        } else this._activeBtn(btnEl)
+        if (this.hasInvalidinput(this._inputList)) {
+          this._disableBtn(this._btnEl)
+        } else this._activeBtn(this._btnEl)
       })
     })
   }
@@ -72,16 +73,14 @@ export default class FormValidator {
     this._setListener(form)
   }
 
-  resetFormErrorMessages(errorMessages) {
-    const btnEl = this._popupForm.querySelector(this._formSelector).querySelector(this._submitBtnSelector);
-    this._disableBtn(btnEl);
+  resetFormErrorMessages() {
+    this._disableBtn(this._btnEl)
 
-    const inputListFromForm = Array.from(this._popupForm.querySelector(this._formSelector).querySelectorAll(this._inputSelector))
-    inputListFromForm.forEach((input) => {
+    this._inputList.forEach((input) => {
       input.value = ""
       input.classList.remove("form__item_type_error")
     })
-    errorMessages.forEach((errorMessage) => {
+    this._errorMessages.forEach((errorMessage) => {
       errorMessage.textContent = ""
     })
   }

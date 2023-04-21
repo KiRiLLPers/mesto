@@ -1,7 +1,7 @@
 export default class Card {
-  constructor(data, cardTemplate, openPopupImage) {
-    this._name = data.name
-    this._link = data.link
+  constructor(card, cardTemplate, openPopupImage) {
+    this._name = card.name
+    this._link = card.link
     this._cardTemplate = cardTemplate
     this._openPopupImage = openPopupImage
   }
@@ -39,9 +39,13 @@ export default class Card {
     this._element = this._getTemplate()
     this._setEventListenerForCard()
 
-    this._element.querySelector(".card__image").src = this._link
-    this._element.querySelector(".card__image").alt = this._name
+    const cardImg = this._element.querySelector(".card__image")
+
+    cardImg.src = this._link
+    cardImg.alt = this._name
+
     this._element.querySelector(".card__title").textContent = this._name
+
     return this._element
   }
 }
