@@ -18,7 +18,7 @@ export default class FormValidator {
     this._inputList.forEach((inputEl) => {
       inputEl.addEventListener("input", (e) => {
         this._checkInputValidity(form, inputEl)
-        if (this.hasInvalidinput(this._inputList)) {
+        if (this._hasInvalidinput(this._inputList)) {
           this._disableBtn(this._btnEl)
         } else this._activeBtn(this._btnEl)
       })
@@ -57,7 +57,7 @@ export default class FormValidator {
     errorEl.textContent = ""
   }
 
-  hasInvalidinput(inputList) {
+  _hasInvalidinput(inputList) {
     return inputList.some((inputEl) => {
       return !inputEl.validity.valid
     })
