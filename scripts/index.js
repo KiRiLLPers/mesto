@@ -48,17 +48,19 @@ const closePopup = (popup) => {
   document.removeEventListener("keydown", closePopupClickEsc)
 }
 
-const hasPopupContainClassOpened = (popupElements) => {
-  popupElements.forEach((popupEl) => {
-    if (popupEl.classList.contains("popup_opened")) {
-      closePopup(popupEl)
-    }
-  })
-}
+// const hasPopupContainClassOpened = (popupElements) => {
+//   popupElements.forEach((popupEl) => {
+//     if (popupEl.classList.contains("popup_opened")) {
+//       closePopup(popupEl)
+//     }
+//   })
+// }
 
 const closePopupClickEsc = (e) => {
+  const popupIsopened = document.querySelector(".popup_opened")
   if (e.key === "Escape") {
-    hasPopupContainClassOpened(popupElements)
+    closePopup(popupIsopened)
+    // hasPopupContainClassOpened(popupElements)
   }
 }
 // функция закрытия любого попапа кликом на оверлей
