@@ -1,6 +1,8 @@
 import {validationSetting, initialCards} from "./constants.js"
 import Card from "./Card.js"
 import FormValidator from "./FormValidator.js"
+import Section from "./Section.js"
+import Popup from "./Popup.js"
 
 const popupElements = document.querySelectorAll(".popup")
 
@@ -48,13 +50,13 @@ const closePopup = (popup) => {
   document.removeEventListener("keydown", closePopupClickEsc)
 }
 
-// const hasPopupContainClassOpened = (popupElements) => {
-//   popupElements.forEach((popupEl) => {
-//     if (popupEl.classList.contains("popup_opened")) {
-//       closePopup(popupEl)
-//     }
-//   })
-// }
+const hasPopupContainClassOpened = (popupElements) => {
+  popupElements.forEach((popupEl) => {
+    if (popupEl.classList.contains("popup_opened")) {
+      closePopup(popupEl)
+    }
+  })
+}
 
 const closePopupClickEsc = (e) => {
   const popupIsopened = document.querySelector(".popup_opened")
@@ -140,6 +142,11 @@ popupCloseBtnElements.forEach((item) => {
     hasPopupContainClassOpened(popupElements)
   })
 })
+// popupCloseBtnElements.addEventListener("click", (e) => {
+//   if(popupCloseBtnElements.closest(".popup_opened")) {
+//     closePopup(document.querySelector(".popup_opened"))
+//   }
+// })
 
 popupElements.forEach((popupEl) => {
   // слушатель для закрытия любого попапа кликом на оверлей
