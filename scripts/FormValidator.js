@@ -64,20 +64,18 @@ export default class FormValidator {
   }
 
   enableValidation() {
-    const form = this._popupForm.querySelector(this._formSelector)
-
-    form.addEventListener("submit", (e) => {
+    this._popupForm.addEventListener("submit", (e) => {
       e.preventDefault()
     })
 
-    this._setListener(form)
+    this._setListener(this._popupForm)
   }
 
   resetFormErrorMessages() {
     this._disableBtn(this._btnEl)
 
     this._inputList.forEach((input) => {
-      input.value = ""
+      // input.value = ""
       input.classList.remove("form__item_type_error")
     })
     this._errorMessages.forEach((errorMessage) => {
