@@ -1,10 +1,11 @@
-import {validationSetting, initialCards} from "./constants.js"
-import Card from "./Card.js"
-import FormValidator from "./FormValidator.js"
-import Section from "./Section.js"
-import PopupWithImage from "./PopupWithImage.js"
-import PopupWithForm from "./PopupWithForm.js"
-import UserInfo from "./UserInfo.js"
+import {validationSetting, initialCards} from "../utils/constants.js"
+import Card from "../components/Card.js"
+import FormValidator from "../components/FormValidator.js"
+import Section from "../components/Section.js"
+import PicturePopup from "../components/PicturePopup.js"
+import PopupWithForm from "../components/PopupWithForm.js"
+import UserInfo from "../components/UserInfo.js"
+import "./index.css"
 
 const popupWithCardsOpenBtnElement = document.querySelector(".profile__add-button")
 const profileBtnElement = document.querySelector(".profile__edit-button")
@@ -23,13 +24,13 @@ const enableValidation = (validationSetting) => {
   })
 }
 
-const openpopupWithImage = new PopupWithImage(".popup-img")
+const popupPicture = new PicturePopup(".popup-img")
 
 const cardList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, cardTemplate, openpopupWithImage.open)
+      const card = new Card(item, cardTemplate, popupPicture.open)
       return card.createCard()
     },
   },
@@ -50,11 +51,10 @@ const popupWithCards = new PopupWithForm(".popup-cards", (e) => {
   cardList.addItem(cardList.renderer(popupWithCards.getInputValues()))
   popupWithCards.close()
 })
-const popupWithImage = new PopupWithImage(".popup-img")
 
 popupWithProfile.setEventListeners()
 popupWithCards.setEventListeners()
-popupWithImage.setEventListeners()
+popupPicture.setEventListeners()
 
 profileBtnElement.addEventListener("click", () => {
   formValidators["form-profile"].resetFormErrorMessages()
