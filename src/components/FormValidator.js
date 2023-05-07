@@ -75,7 +75,6 @@ export default class FormValidator {
     this._disableBtn(this._btnEl)
 
     this._inputList.forEach((input) => {
-      // input.value = ""
       input.classList.remove("form__item_type_error")
     })
     this._errorMessages.forEach((errorMessage) => {
