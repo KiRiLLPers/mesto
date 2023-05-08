@@ -2,7 +2,7 @@
   display: block;
   width: 282px;
   height: 282px;
-  background-size: cover;
+  object-fit: cover;
   background-repeat: no-repeat;
   cursor: zoom-in;
 }
