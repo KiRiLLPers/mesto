@@ -35,6 +35,7 @@
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__title/card__title.css);
 @import url(../blocks/card/__trash-btn/card__trash-btn.css);
+@import url(../blocks/card/__like-current/card__like-current.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyrigth/footer__copyrigth.css);
@@ -54,6 +55,7 @@
 @import url(../blocks/form/__item-error/form__item-error.css);
 @import url(../blocks/form/__item-error/_active/form__item-error_active.css);
 @import url(../blocks/form/__heading/form__heading.css);
+@import url(../blocks/form/__heading-delete/form__heading-delete.css);
 @import url(../blocks/form/__profile-info/form__profile-info.css);
 @import url(../blocks/form/__item/form__item.css);
 @import url(../blocks/form/__item/form__item/_type/form__item_type_error.css);

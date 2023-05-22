@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor({nameSelector, professionSelector}) {
+  constructor({nameSelector, professionSelector, avatarSelector}) {
     this._name = document.querySelector(nameSelector)
     this._profession = document.querySelector(professionSelector)
+    this._avatar = document.querySelector(avatarSelector)
   }
 
   getUserInfo() {
@@ -13,7 +14,8 @@ export default class UserInfo {
   }
 
   setUserInfo(dataUserInfo) {
-    this._name.textContent = dataUserInfo.heading
-    this._profession.textContent = dataUserInfo.subheading
+    this._name.textContent = dataUserInfo.name
+    this._profession.textContent = dataUserInfo.about
+    this._avatar.style.backgroundImage = `url(${dataUserInfo.avatar})`
   }
 }
