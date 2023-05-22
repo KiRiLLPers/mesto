@@ -5,7 +5,7 @@ import Section from "../components/Section.js";
 import PicturePopup from "../components/PicturePopup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import PopupDelete from "../components/PopupDelete.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import Api from "../components/Api.js";
 import "./index.css";
 
@@ -41,7 +41,7 @@ const api = new Api({
 
 const popupPicture = new PicturePopup(".popup-img");
 
-const popupDelete = new PopupDelete(".popup-delete", (card, cardId) => {
+const popupDelete = new PopupWithConfirmation(".popup-delete", (card, cardId) => {
   api
     .deleteCard(cardId)
     .then(() => {
@@ -60,14 +60,14 @@ const cardList = new Section(
           api
             .deleteLikeCard(cardId)
             .then((res) => {
-              card.toggleLikeImage(res.likes);
+              card.changeLikeImage(res.likes);
             })
             .catch((err) => console.error(err));
         } else {
           api
             .hendlerLikeCard(cardId)
             .then((res) => {
-              card.toggleLikeImage(res.likes);
+              card.changeLikeImage(res.likes);
             })
             .catch((err) => console.error(err));
         }

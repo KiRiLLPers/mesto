@@ -38,7 +38,7 @@ export default class Card {
     this._likeCounter.textContent = likes.length;
   }
 
-  toggleLikeImage(likes) {
+  changeLikeImage(likes) {
     this._cardLikeImg.classList.toggle("card__like-image_active");
     this._changeLikesCounter(likes);
   }
