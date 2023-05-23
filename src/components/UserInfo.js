@@ -13,9 +13,11 @@ export default class UserInfo {
     return userInfo
   }
 
-  setUserInfo(dataUserInfo) {
-    this._name.textContent = dataUserInfo.name
-    this._profession.textContent = dataUserInfo.about
-    this._avatar.style.backgroundImage = `url(${dataUserInfo.avatar})`
+  setUserInfo({ name, about, avatar, id }) {
+    this._name.textContent = name
+    this._profession.textContent = about
+    this._avatar.style.backgroundImage = `url(${avatar})`
+    // оставил id не приватным, т.к. обращаюсь к нему в сабмите создания карточки
+    this.id = id;
   }
 }

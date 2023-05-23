@@ -9,7 +9,6 @@ export default class FormValidator {
     this._popupForm = popupForm;
     this._inputList = Array.from(this._popupForm.querySelectorAll(this._inputSelector));
     this._btnEl = this._popupForm.querySelector(this._submitBtnSelector);
-    this._errorMessages = Array.from(this._popupForm.querySelectorAll(".form__item-error"));
   }
 
   _setListener() {
