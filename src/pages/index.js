@@ -39,8 +39,6 @@ const api = new Api({
   },
 })
 
-// api._request();
-
 const popupPicture = new PicturePopup(".popup-img")
 
 const popupDelete = new PopupWithConfirmation(".popup-delete", (card, cardId) => {
